@@ -63,7 +63,7 @@ export function deleteNote(delete_date){
 				dispatch({ type : DELETE_NOTE, notes : notes });
 			}.bind(this),
 			error : function(){
-				console.log("blog delete failed!");
+				console.log("blog delete failed! ");
 			}.bind(this)
 
 		});
