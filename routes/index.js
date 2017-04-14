@@ -24,10 +24,10 @@ router.post('/addNote', function(req,res,next){
 		if(err){
 			return next(err);
 		}else{
-			console.log("笔记已经成功写入数据库啦！！！");
+			console.log("blog written success!");
 			noteModel.find({},function(err,notes){
 				if(err){
-					console.log("咦？是怎么回事呢？");
+					console.log("blog written error!");
 				}else{
 					res.json(notes);
 				}
@@ -43,10 +43,10 @@ router.post('/addNote', function(req,res,next){
  		if(err){
  			return next(err);/*错误的话，把错误给运出来*/
  		}else{
- 			console.log("笔记已经被你残忍的给删除了啊...");
+ 			console.log("blog delete success!");
  			noteModel.find({},function(err,notes){
  				if(err){
- 					console.log("我也不知道怎么回事...明明已经删除了啊...");
+ 					console.log("blog delete error!");
  				}else{
  					res.json(notes);
  				}

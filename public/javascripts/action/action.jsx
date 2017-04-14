@@ -22,7 +22,7 @@ export function initNotes(){
 				dispatch({ type : INIT_NOTES, notes : notes });
 			}.bind(this),
 			error : function(){
-				console.log("notes获取失败~");
+				console.log("博客获取失败~");
 			}.bind(this)
 		})
 	}
@@ -38,12 +38,12 @@ export function addNote(newNote){
 			data : JSON.stringify(newNote),
 			cache : false,
 			success : function(notes){
-				console.log("笔记添加成功！");
+				console.log("blog added success！");
 				notes=notesSort(notes);
 				dispatch({ type : ADD_NOTE, notes : notes });
 			}.bind(this),
 			error : function(){
-				console.log("笔记添加失败啦~");
+				console.log("blog added failed！");
 			}.bind(this)
 		});
 	}
@@ -58,12 +58,12 @@ export function deleteNote(delete_date){
 			data : JSON.stringify(delete_date),
 			cache : false,
 			success : function(notes){
-				console.log("笔记已经被删除啦！");
+				console.log("blog delete success!");
 				notes=notesSort(notes);
 				dispatch({ type : DELETE_NOTE, notes : notes });
 			}.bind(this),
 			error : function(){
-				console.log("笔记删除失败啦~");
+				console.log("blog delete failed!");
 			}.bind(this)
 
 		});
