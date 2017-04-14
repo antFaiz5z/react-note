@@ -6,8 +6,8 @@ class Notes_header extends React.Component{
 		return(
 			<div className="header">
 				<div className="header_main">
-					<h2>React 笔记</h2>
-					<input type="button" value="添加笔记" className="add_note_btn" onClick={ this.props.onToggleForm }/>
+					<h2>React Blog System</h2>
+					<input type="button" value="新增博客" className="add_note_btn" onClick={ this.props.onToggleForm }/>
 				</div>
 			</div>
 		);

@@ -31,7 +31,7 @@ class Notes extends React.Component{
 	}
 
 	onDeleteNote(date){
-		/*根据日期来删除笔记*/
+		/*根据日期来删除博客*/
 		var delete_date={
 			date : date
 		};
