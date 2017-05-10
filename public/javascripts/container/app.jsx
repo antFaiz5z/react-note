@@ -6,7 +6,7 @@ import { initNotes, addNote, deleteNote } from "../action/action.jsx";
 import Notes_header from "../component/Notes_header.jsx";
 import Notes_form from "../component/Notes_form.jsx";
 import Notes_list from "../component/Notes_list.jsx";
-import "../../stylesheets/style.scss";
+import "../../stylesheets/my.css";
 
 class Notes extends React.Component{
 	constructor(props){

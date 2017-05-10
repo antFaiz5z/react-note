@@ -1,5 +1,11 @@
 "use strict";
 import React, { Component, PropTypes } from "react";
+import Button from 'react-bootstrap/lib/Button';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Modal from 'react-bootstrap/lib/Modal';
 
 class Notes_form extends React.Component{
 
@@ -20,15 +26,44 @@ class Notes_form extends React.Component{
 			display : this.props.formDisplayed ? "block" : "none"
 		};
 		return(
-			<div className="note_form_wrap">
-				<form ref="yout_form" action="#" className="note_form" style={ style } onSubmit={ this.handleSubmit.bind(this) }>
-					<h5>新博客</h5>
-					<input ref="title" type="text" className="your_title" placeholder="博客标题"/>
-					<textarea ref="description" className="your_description" placeholder="博客内容"/>
-					<input type="button" value="取消" className="cancel_btn" onClick={ this.props.onToggleForm }/>
-					<input type="submit" value="确认" className="confirm_btn"/>
-				</form>
-			</div>
+			<Modal show={this.props.formDisplayed} onHide={this.props.onToggleForm}>
+				<Modal.Header closeButton>
+					<Modal.Title>Modal heading</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+
+					<form ref="yout_form" action="#" className="note_form" style={ style }
+						  onSubmit={ this.handleSubmit.bind(this) }>
+						<Grid>
+							<Row>
+								<Col componentClass={ControlLabel} sm={1}>
+									标题
+								</Col>
+								<Col sm={4} md={8}>
+									<input ref="title" type="text" className="your_title" placeholder="博客标题"/>
+								</Col>
+							</Row>
+							<Row>
+								<Col componentClass={ControlLabel} sm={1}>
+									正文
+								</Col>
+								<Col sm={4} md={8}>
+									<textarea ref="description" className="your_description" placeholder="博客内容"/>
+								</Col>
+							</Row>
+							<Row>
+								<Col smOffset={1} sm={1}>
+									<Button type="submit" bsStyle="primary" onClick={this.props.onToggleForm}>确认</Button>
+								</Col>
+							</Row>
+						</Grid>
+					</form>
+
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={this.props.onToggleForm}>关闭</Button>
+				</Modal.Footer>
+			</Modal>
 		);
 	}
 }
@@ -37,6 +72,6 @@ Notes_form.propTypes = {
 	onToggleForm : PropTypes.func.isRequired,
 	formDisplayed : PropTypes.bool.isRequired,
 	onNewNote : PropTypes.func.isRequired
-}
+};
 
 export default Notes_form; 

@@ -1,40 +1,45 @@
 "use strict";
-import React, { Component, PropTypes } from "react";
+import React, {Component, PropTypes} from "react";
+import Panel from 'react-bootstrap/lib/Panel';
+import Col from 'react-bootstrap/lib/Col';
+import Accordion from 'react-bootstrap/lib/Accordion';
+import Button from 'react-bootstrap/lib/Button';
 
-class Notes_item extends React.Component{
+class Notes_item extends React.Component {
 
-	handleOver(){
-		this.refs.delete.style.display="block";
-	}
+    handleOver() {
+        this.refs.delete.style.display = "block";
+    }
 
-	handleOut(){
-		this.refs.delete.style.display="none";
-	}
+    handleOut() {
+        this.refs.delete.style.display = "none";
+    }
 
-	handleDelete(){
-		var date=this.props.date;
-		this.props.onDeleteNote(date);
-	}
+    handleDelete() {
+        var date = this.props.date;
+        this.props.onDeleteNote(date);
+    }
 
-	render(){
-		return(
-			<div>
-				<div className="notes_item" onMouseOver={ this.handleOver.bind(this) } onMouseOut={ this.handleOut.bind(this) }>
-					<h4>{ this.props.title }</h4>
-					<p>{ this.props.description }</p>
-					<input className="delete" ref="delete" type="button" value="删除" onClick={ this.handleDelete.bind(this) }/>
-					<span className="date">{ this.props.date }</span>
-				</div>
-			</div>
-		);
-	}
+    render() {
+        return (
+
+            <Col sm={6}>
+                <Accordion>
+                    <Panel bsStyle="primary" header={ this.props.title } footer={this.props.date}>
+                        { this.props.description }
+                        <Button className="delete" bsStyle="info" bsSize="small" onClick={ this.handleDelete.bind(this) }>X</Button>
+                    </Panel>
+                </Accordion>
+            </Col>
+        );
+    }
 }
 
 Notes_item.propTypes = {
-	title : PropTypes.string.isRequired,
-	description : PropTypes.string.isRequired,
-	date : PropTypes.string.isRequired,
-	onDeleteNote : PropTypes.func.isRequired
-}
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    onDeleteNote: PropTypes.func.isRequired
+};
 
 export default Notes_item;
