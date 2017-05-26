@@ -28,7 +28,7 @@ class Notes_form extends React.Component{
 		return(
 			<Modal show={this.props.formDisplayed} onHide={this.props.onToggleForm}>
 				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
+					<Modal.Title>添加博客</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 
